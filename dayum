@@ -1,0 +1,86 @@
+Mounting vdisks with error lvls:
+
+diskpart /s "D:\SCRIPTS\mount_vdisk_projects.txt"
+
+IF %errorlevel%==0 goto success
+IF %errorlevel%>==1 goto fail
+
+:success
+echo VDisk successfully attached.	Laufwerk: P:\	User: %username%	Datum: %date%	Zeit: %time% >> "D:\LOGS\vdisk_log.txt"
+goto ende
+
+:fail
+echo VDisk NOT attached!	Laufwerk: P:\	User: %username%	Datum: %date%	Zeit: %time% >> "D:\LOGS\vdisk_log.txt"
+goto ende
+
+:ende
+exit
+
+
+
+
+diskpart /s "D:\SCRIPTS\mount_vdisk_encrypted.txt"
+
+IF %errorlevel%==0 goto success
+IF %errorlevel%==1 goto fail
+
+:success
+echo VDisk successfully attached.	Laufwerk: E:\	User: %username%	Datum: %date%	Zeit: %time% >> "D:\LOGS\vdisk_log.txt"
+goto ende
+
+:fail
+echo VDisk NOT attached!	Laufwerk: E:\	User: %username%	Datum: %date%	Zeit: %time% >> "D:\LOGS\vdisk_log.txt"
+goto ende
+
+:ende
+exit
+
+
+
+
+mounting vdisk without errorlevels
+
+echo off
+cls
+diskpart /s "...." | %username% %date% %time% >> "D:\...."
+pause
+
+select vdisk file="..."
+attach vdisk
+select vdiks file="..."
+attach vdisk
+
+
+
+directorys
+echo off
+cls
+d:
+mkdir DATA SCRIPTS LOGS
+cd DATA
+mkdir ADMIN BACKUP HOME FILES
+cd FILES
+mkdir ORGANISTATION BUCHHALTUNG PRODUKTION IT
+cd BUCHHALTUNG
+mkdir Allgemein Intern Management
+cd D:\DATA\FILES\PRODUKTION
+mkdir Allgemein Intern Management
+cd D:\DATA\FILES\IT
+mkdir Allgemein Intern Management
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
