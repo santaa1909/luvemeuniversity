@@ -42,7 +42,7 @@ mounting vdisk without errorlevels
 
 echo off
 cls
-diskpart /s "...." | %username% %date% %time% >> "D:\...."
+diskpart /s "...." | echo %username% %date% %time% >> "D:\...."
 pause
 
 select vdisk file="..."
