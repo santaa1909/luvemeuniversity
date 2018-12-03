@@ -182,6 +182,28 @@ robocopy d:\Home\$Username /E /XO D:\BACKUP\$Username
 
 
 
+changing policy remote singed
+
+#Set Execution Posiltion auf RemoteSigned
+currPolicy = Get-ExecutionPolicy
+Write "Current ExectionPosition is <$currPolicy> - update to RemoteSigned"
+Set-ExecutionPolicy RemoteSigned
+
+#
+Get-Process | Format-Table -property  processName, pm, vm  
+
+#Create new alias 'gel' for Get-EventLog
+New-Alias -Name gel -Value Get-EventLog
+Get-Alias -Name gel
+
+New-Alias -Name Of -Value Out-File
+Get-Alias -Name Of
+
+
+#Reset back execution policy
+Set-ExecutionPolicy $currPolicy
+
+pause
 
 
 
