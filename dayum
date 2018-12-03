@@ -70,6 +70,36 @@ mkdir Allgemein Intern Management
 
 
 
+creating user directories
+
+@echo off
+
+IF EXIST "C:\UEBUNG\SWAP\%username%" (
+  echo Directory 'C:\UEBUNG\SWAP\%username%' already exists! - Nothing todo!
+) ELSE (
+  echo Create User directory for '%username%'
+  mkdir "C:\UEBUNG\SWAP\%username%"
+)
+
+
+:ende
+pause
+REM exit
+
+deleting user directory
+
+@echo off
+
+IF EXIST "C:\UEBUNG\SWAP\%username%" (
+  echo Delete direcotry 'C:\UEBUNG\SWAP\%username%'
+  rmdir /S /Q C:\UEBUNG\SWAP\%username%\
+)
+
+
+:ende
+pause
+REM exit
+
 
 
 
