@@ -102,8 +102,14 @@ REM exit
 
 
 
-POWERSHELL
+netuse connects for usesers:
 
+net use S: \\CBSGL-XX\SCRIPTS
+
+
+
+
+POWERSHELL
 
 user log in log
 $LogTime = get-date -Format "HH:mm dd.mm.yyyy"
@@ -111,8 +117,32 @@ $user = $env:USERNAME
 
 "Login Successfull          Time:$Logtime          User:$user"|out-file -FilePath d:\logs\log_logons.txt -Append
 
+to activate script u need (CMD/BAT):
+PowerShell.exe -Command "D:\SCRIPTS\login_user_log_successfull.ps1"
 
 backups:
+
+to start backup powershell (CMD/BAT):
+@echo off
+
+set /p abfrage=Wollen Sie ein vollständiges Backup machen, oder nur neue/geänderte Datein übertragen? (A)ALLE / (N)NEUE...
+
+if "%abfrage%" == "A" goto :alle
+if "%abfrage%" == "N" goto :neue
+
+:alle
+PowerShell.exe -Command "D:\SCRIPTS\backup_folder_home_manual_complete.ps1"
+goto ende
+
+:neue
+PowerShell.exe -Command "D:\SCRIPTS\backup_folder_home_manual_newdata.ps1"
+goto ende
+
+:ende
+pause
+exit
+
+
 
 auto:
 
